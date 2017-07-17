@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "546449358327",
+    "firebase_url": "https://homemade-a1cd6.firebaseio.com",
+    "project_id": "homemade-a1cd6",
+    "storage_bucket": "homemade-a1cd6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:546449358327:android:2156f23e253ceb46",
+        "android_client_info": {
+          "package_name": "com.homemade.akhilez.syllabus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "546449358327-umlc5ekunhl3kf78crh3vfqbp24a7f25.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5fuV77OBXg_saGWeiYgBtoOigo2XcOSY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

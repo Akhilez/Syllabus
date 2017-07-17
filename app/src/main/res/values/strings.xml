@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Syllabus</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="banner_ad_unit_id">ca-app-pub-1319071076347743/8419673714</string>
+    <string name="banner_ad_unit_id2">ca-app-pub-1319071076347743/3849873310</string>
+    <string name="dummyBanner">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+
+</resources>
