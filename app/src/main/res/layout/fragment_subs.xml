@@ -1,37 +1,66 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fullContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/darkPrimaryLight"
-    android:orientation="vertical"
-    android:id="@+id/fullContainer">
+    android:orientation="vertical">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:id="@+id/spacer1"
-        android:layout_alignParentTop="true"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/tabHeight"
-        android:id="@+id/spacer2"
-        android:layout_below="@+id/spacer1"/>
+    <View android:layout_width="match_parent" android:layout_height="?attr/actionBarSize" />
+    <View android:layout_width="match_parent" android:layout_height="@dimen/tabHeight" android:layout_marginBottom="7dp" />
 
-    <com.emilsjolander.components.StickyScrollViewItems.StickyScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/scrollView"
-        android:layout_marginTop="8dp"
-        android:layout_below="@+id/spacer2">
+        android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <android.support.v7.widget.CardView
+            android:id="@+id/unitNavContainer"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:id="@+id/innerLinear"
-            android:orientation="vertical"
-            android:paddingBottom="55dp">
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="-10dp"
+            android:layout_marginTop="40dp"
+            android:textAlignment="center"
+            app:cardBackgroundColor="@color/darkPrimary"
+            app:cardCornerRadius="15dp">
 
+            <android.support.v7.widget.CardView
+                android:id="@+id/unitHighlighter"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="@color/colorAccent"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp" />
 
-        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/unitNavLinear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-    </com.emilsjolander.components.StickyScrollViewItems.StickyScrollView>
-</RelativeLayout>
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <com.emilsjolander.components.StickyScrollViewItems.StickyScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="70dp">
+
+                <LinearLayout
+                    android:id="@+id/unitsLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </RelativeLayout>
+        </com.emilsjolander.components.StickyScrollViewItems.StickyScrollView>
+
+    </RelativeLayout>
+</LinearLayout>

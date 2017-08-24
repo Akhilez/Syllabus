@@ -10,4 +10,6 @@
     <color name="darkPrimary">#212121</color>
     <color name="textDark">#929292</color>
     <color name="textLighterDark">#b3ffffff</color>
+    <color name="tickSecondary">#d50000</color>
+    <color name="myCheckBoxTextColor">#b3ffffff</color>
 </resources>

@@ -1,0 +1,21 @@
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textAlignment="center"
+    android:id="@+id/unitNumberContainer"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="50dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/unitNumber"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="20dp"
+        android:textSize="18sp"
+        android:textColor="@color/textLighterDark"
+        android:text="0"/>
+
+</RelativeLayout>
