@@ -46,7 +46,7 @@ class OpenDBHelper(contextParam: Context) : SQLiteOpenHelper(contextParam, DATAB
         if (!dbHelper.isConnected(context)) return
         val syllabusId = getDetails()["syllabusId"]
 
-        if(syllabusId != null) syncSubjects(dbHelper, syllabusId!!)
+        if(syllabusId != null) syncSubjects(dbHelper, syllabusId)
     }
 
     private fun syncSubjects(dbHelper: DBHelper, syllabusId: String) {
@@ -69,8 +69,7 @@ class OpenDBHelper(contextParam: Context) : SQLiteOpenHelper(contextParam, DATAB
         for (subject in subjects) {
             db.execSQL("insert into subjects_temp values( ${subject.id}, '${subject.name}' )")
             if (subject.units != null)
-                for (unit in subject.units!!)
-                    db.execSQL("insert into units_temp values ( '${subject.id}', '${unit.unit}', '${unit.concepts}', '${getChecks(subject.id, unit.unit)}' )")
+                enterUnits(subject, db)
         }
 
         //3. drop table subjects
@@ -83,8 +82,14 @@ class OpenDBHelper(contextParam: Context) : SQLiteOpenHelper(contextParam, DATAB
         db.close()
     }
 
-    private fun getChecks(subjectId: String, unitId: String): String {
-        val db = readableDatabase
+    private fun enterUnits(subject: Subject, db: SQLiteDatabase) {
+        for (unit in subject.units!!) {
+            val sql = "insert into units_temp values ( '${subject.id}', '${unit.unit}', '${unit.concepts}', '${getChecks(subject.id, unit.unit, db)}' )"
+            db.execSQL(sql)
+        }
+    }
+
+    private fun getChecks(subjectId: String, unitId: String, db: SQLiteDatabase): String {
         val query = "select checks from units where subject_id=$subjectId and unit='$unitId'"
         val result = db.rawQuery(query, null)
 
@@ -95,7 +100,6 @@ class OpenDBHelper(contextParam: Context) : SQLiteOpenHelper(contextParam, DATAB
             ""
         }
         result.close()
-        db.close()
         return concepts
     }
 
@@ -111,7 +115,10 @@ class OpenDBHelper(contextParam: Context) : SQLiteOpenHelper(contextParam, DATAB
          */
 
         //0. check if the given details match with the current syllabus
-        if (syllabusMatch(syllabus)) return
+        //if (syllabusMatch(syllabus)) return
+
+        //remove anchor
+        context.getSharedPreferences("common", Context.MODE_PRIVATE).edit().putInt("lastTab", 0).apply()
 
         //2. get subjects from syllabus_id
         val subjects = DBHelper().getSubjects(syllabus.id)

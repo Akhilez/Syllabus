@@ -24,10 +24,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.MobileAds
 import com.homemade.akhilez.syllabus.dataStructures.Subject
 import com.homemade.akhilez.syllabus.db.OpenDBHelper
+import com.homemade.akhilez.syllabus.frags.IntroActivity
 import com.homemade.akhilez.syllabus.frags.Sub1Fragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.nav_header.view.*
@@ -57,7 +56,7 @@ class MainActivity : AppCompatActivity() {
 
         //1. if no syllabusId, go to settings else get details
         sharedPref = getSharedPreferences("common", Context.MODE_PRIVATE)
-        if (sharedPref?.getString("syllabusId", null) == null) gotoSettings() ?: return
+        if (sharedPref?.getString("syllabusId", null) == null) gotoIntro() ?: return
 
         details = getDetails()
         val openHelper = OpenDBHelper(this@MainActivity)
@@ -76,7 +75,7 @@ class MainActivity : AppCompatActivity() {
         detailsHeader.text = (details["branch"] + " " + yearSemFormat())
 
         //6. background db sync
-        backgroundSync(openHelper)
+        //backgroundSync(openHelper)
 
         //7. add ad
         addAd()
@@ -126,8 +125,8 @@ class MainActivity : AppCompatActivity() {
         //TODO: set drawer item to current item
     }
 
-    private fun gotoSettings(): Any?{
-        val intent = Intent(this@MainActivity, SettingsActivity::class.java)
+    private fun gotoIntro(): Any?{
+        val intent = Intent(this@MainActivity, IntroActivity::class.java)
         startActivity(intent)
         finish()
         return null
@@ -154,6 +153,11 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.home -> {
                 main_content!!.openDrawer(GravityCompat.START)
+                return true
+            }
+            R.id.help -> {
+                val intent = Intent(this, IntroActivity::class.java)
+                this.startActivity(intent)
                 return true
             }
         }
@@ -215,10 +219,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addAd() {
+        /*
         MobileAds.initialize(applicationContext, resources.getString(R.string.dummyBanner))
         val mAdView = adView
         val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
+        */
     }
 
     private val myColorStateList: ColorStateList

@@ -63,7 +63,7 @@ class MyCheckBox(context: Context, attrSet: AttributeSet?) : CheckBox(context, a
     private fun dpToPx(dp: Int) = Math.round(dp * (context.resources.displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT))
 
     constructor(context: Context) : this(context, attrSet = null) {
-        setPadding(dpToPx(5), dpToPx(5), dpToPx(75), dpToPx(5))
+        setPadding(dpToPx(5), dpToPx(5), dpToPx(70), dpToPx(5))
         setTypeface(Typeface.SANS_SERIF, Typeface.NORMAL)
         textSize = 16f
     }

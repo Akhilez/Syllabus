@@ -14,8 +14,6 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.MobileAds
 import com.homemade.akhilez.syllabus.dataStructures.Syllabus
 import com.homemade.akhilez.syllabus.db.DBHelper
 import com.homemade.akhilez.syllabus.db.OpenDBHelper
@@ -40,10 +38,12 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun addAd() {
+        /*
         MobileAds.initialize(applicationContext, resources.getString(R.string.dummyBanner))
         val mAdView = adView
         val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
+        */
     }
 
     private fun setUpSpinners() {
@@ -51,7 +51,7 @@ class SettingsActivity : AppCompatActivity() {
             var loading: ProgressDialog? = null
             override fun onPreExecute() {
                 super.onPreExecute()
-                loading = ProgressDialog.show(this@SettingsActivity, "Updating universities...", "Please wait...", false, false)
+                loading = ProgressDialog.show(this@SettingsActivity, "Please wait...", "Fetching syllabus...", false, false)
             }
 
             override fun doInBackground(vararg p0: Void?): Array<Syllabus>?{
@@ -157,7 +157,7 @@ class SettingsActivity : AppCompatActivity() {
             var loading: ProgressDialog? = null
             override fun onPreExecute() {
                 super.onPreExecute()
-                loading = ProgressDialog.show(this@SettingsActivity, "Updating syllabus...", "Please wait...", false, false)
+                loading = ProgressDialog.show(this@SettingsActivity, "Please wait...", "Updating syllabus...", false, false)
             }
             override fun doInBackground(vararg p0: Void?): Void? {
                 if (selectedSyllabus == null)
@@ -170,6 +170,7 @@ class SettingsActivity : AppCompatActivity() {
                 super.onPostExecute(result)
                 loading?.dismiss()
                 val intent = Intent(applicationContext, MainActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 startActivity(intent)
                 finish()
             }
