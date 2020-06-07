@@ -8,7 +8,7 @@ package com.homemade.akhilez.syllabus.db
 object Config{
 
     //private val ip = "http://" + "192.168.0.101" + "/syllabus/"
-    private val ip = "https://akhilkanna.in/syllabus/requests/"
+    private val ip = "https://akhilez.com/syllabus/requests/"
 
     val URL_GET_ALL_SYLLABUS = ip + "getAllSyllabus"
     val URL_GET_UNITS = ip + "getUnits"
