@@ -5,7 +5,7 @@ must_download = True
 
 url = 'https://jntuh.ac.in/syllabus'
 results_length = 20  # Number of links per page
-max_pages = 2
+max_pages = 50
 post_data = {'ajax': 1, 'searchin': 'title'}
 key_words = ['M.Tech', 'Syllabus']
 
