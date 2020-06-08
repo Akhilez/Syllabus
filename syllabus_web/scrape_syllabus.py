@@ -18,15 +18,15 @@ for i in range(0, max_pages * results_length, results_length):
     html_data = BeautifulSoup(requests.post(url, post_data).text, "html.parser")
 
     hyperlinks = [link for link in html_data.find_all('a') if '.pdf' in link.get('href')]
+    if len(hyperlinks) == 0:
+        print(f'Last page: {i / results_length}')
+        break
+
     for link in hyperlinks:
         link_text = link.get_text().lower()
         if all([key_word in link_text for key_word in key_words]):
             pdf_links.append(link.get('href'))
             print(link_text)
-
-    if len(hyperlinks) == 0:
-        print(f'Last page: {i / results_length}')
-        break
 
 print(f'Total PDFs found: {len(pdf_links)}')
 
@@ -40,6 +40,7 @@ def download_pdf(link):
 
 if must_download:
     import threading
+
     for link in pdf_links:
         print(f"Downloading PDF from: {link}")
         threading.Thread(target=download_pdf, args=(link,)).start()
