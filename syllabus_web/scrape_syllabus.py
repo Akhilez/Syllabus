@@ -6,7 +6,7 @@ must_download = False
 url = 'https://jntuh.ac.in/syllabus'
 results_length = 20  # Number of links per page
 max_pages = 50
-post_data = {'ajax': 1, 'searchin': 'title'}
+post_data = {'ajax': 1, 'searchin': 'title', 'searchterm': 'B.Tech'}
 key_words = ['b.tech', 'syllab']
 
 pdf_links = []
